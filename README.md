@@ -4,4 +4,7 @@ cppwee is a c++ workflow execution engine(WEE). It's designed to be a library in
 
 In an execution flow, cppwee use `Statement` to represent the nodes in the flow. And it use `Arguments` to represent the data passed between statments. You can implement your own statements and arguments so that cppwee support different kind usage.
 
+## TODO
 
+* implement Windows process statement
+* write a front-end DSL 
