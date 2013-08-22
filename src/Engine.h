@@ -21,6 +21,9 @@ namespace Wee {
         typedef std::map<int, RunInstancePtr> Instances;
     public:
         // run a new instance
+        bool run(const StmtChunkPtr &chunk, ArgumentsPtr arg, RunInstance::Callback cb,
+            const RunInstance::Environment &env);
+
         bool run(const StmtChunkPtr &chunk, ArgumentsPtr arg, RunInstance::Callback cb);
 
         // resume halted run instance

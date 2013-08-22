@@ -9,6 +9,8 @@
 #include <list>
 #include <functional>
 #include <tuple>
+#include <map>
+#include <string>
 
 namespace Wee {
     // a whole statement chunk execution result
@@ -40,10 +42,12 @@ namespace Wee {
         typedef std::list<PipelinePtr> Pipelines;
         typedef std::function<void (ChunkRet, ArgumentsPtr ret)> Callback;
         typedef std::list<StmtRef> PrevStack;
+        typedef std::map<std::string, std::string> Environment;
 
     public:
         // it will clone a new chunk from `chunk'
-        RunInstance(int id, const StmtChunkPtr &chunk, ArgumentsPtr arg, Callback cb);
+        RunInstance(int id, const StmtChunkPtr &chunk, ArgumentsPtr arg, Callback cb,
+            const Environment &env);
 
         // return true to indicate the run process has been done
         bool run();
@@ -56,6 +60,8 @@ namespace Wee {
 
         // called by failed statments
         void fail(int code);
+
+        Environment &env();
 
     private:
         bool doRun(ArgumentsPtr arg, StmtRef prev);
@@ -74,6 +80,7 @@ namespace Wee {
         PrevStack m_prevS;
         Callback m_cb;
         StmtChunkPtr m_chunk;
+        Environment m_env;
     };
     typedef std::shared_ptr<RunInstance> RunInstancePtr;
 }

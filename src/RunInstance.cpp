@@ -10,16 +10,13 @@
 #include "Stmt.h"
 
 namespace Wee {
-    RunInstance::RunInstance(int id, const StmtChunkPtr &chunk, ArgumentsPtr arg, Callback cb) :
-        m_cb(cb) {
+    RunInstance::RunInstance(int id, const StmtChunkPtr &chunk, ArgumentsPtr arg, Callback cb,
+        const Environment &env) :
+        m_cb(cb),
+        m_env(env) {
         m_id = id;
         m_pipeIdSeed = 0;
         m_chunk = chunk->clone();
-#ifdef _DEBUG
-        char name[512];
-        sprintf(name, "clone%02d.dot", m_id);
-        m_chunk->view(name);
-#endif
         m_pipes.push_back(newPipeline(m_chunk->head(), arg));
     }
 
@@ -149,5 +146,9 @@ namespace Wee {
 
     PipelinePtr RunInstance::newPipeline(StmtRef head, ArgumentsPtr args) {
         return PipelinePtr(new Pipeline(++m_pipeIdSeed, this, head, args));
+    }
+
+    RunInstance::Environment &RunInstance::env() {
+        return m_env;
     }
 }
