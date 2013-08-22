@@ -8,6 +8,8 @@
 #include "Stmt.h"
 #include "Spliter.h"
 #include "Merger.h"
+#include "GotoStmt.h"
+#include "IfStmt.h"
 #include "StmtFactory.h"
 #include "RunInstance.h"
 #include "Pipeline.h"

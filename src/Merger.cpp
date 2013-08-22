@@ -20,7 +20,7 @@ namespace Wee {
                     assert(it != t.end());
                     array.push_back(it->second);
             });
-            return StmtRet(StmtRet::CONTINUE, args->Merge(array));
+            return StmtRet(StmtRet::CONTINUE, args->merge(array));
         } 
         return StmtRet(StmtRet::MERGE_WAIT, nullptr);
     } 

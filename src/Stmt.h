@@ -23,10 +23,13 @@ namespace Wee {
         virtual ~ArgumentList() {}
 
         // split this and return a list of new arguments
-        virtual ArgArray Split() = 0;
+        virtual ArgArray split() = 0;
 
         // create a new arguments which merge all args
-        virtual Ptr Merge(const ArgArray &args) = 0;
+        virtual Ptr merge(const ArgArray &args) = 0;
+
+        // check if this argument is null
+        virtual bool isNull() const { return false; }
     };
     typedef ArgumentList::Ptr ArgumentsPtr;
 
@@ -68,6 +71,8 @@ namespace Wee {
         ST_NULL = 0,
         ST_MERGER,
         ST_SPLITER,
+        ST_GOTO,
+        ST_IF,
         ST_USER = 0x0f, // user statements start here
     };
 
@@ -98,6 +103,9 @@ namespace Wee {
 
         // execute this statement
         virtual StmtRet execute(WeakPtr prev, ArgumentsPtr args) = 0;
+
+        // get the next executed statement after this
+        virtual WeakPtr next();
 
         // output statements linkage as Graphviz format
         virtual std::string view();

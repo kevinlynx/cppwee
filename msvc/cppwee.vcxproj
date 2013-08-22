@@ -14,6 +14,8 @@
     <ClInclude Include="..\src\DataStmt.h" />
     <ClInclude Include="..\src\Engine.h" />
     <ClInclude Include="..\src\f_decl.h" />
+    <ClInclude Include="..\src\GotoStmt.h" />
+    <ClInclude Include="..\src\IfStmt.h" />
     <ClInclude Include="..\src\Merger.h" />
     <ClInclude Include="..\src\Pipeline.h" />
     <ClInclude Include="..\src\RunInstance.h" />
@@ -24,6 +26,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\Engine.cpp" />
+    <ClCompile Include="..\src\IfStmt.cpp" />
     <ClCompile Include="..\src\Merger.cpp" />
     <ClCompile Include="..\src\Pipeline.cpp" />
     <ClCompile Include="..\src\RunInstance.cpp" />

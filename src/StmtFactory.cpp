@@ -6,6 +6,8 @@
 #include "Stmt.h"
 #include "Spliter.h"
 #include "Merger.h"
+#include "GotoStmt.h"
+#include "IfStmt.h"
 #include <assert.h>
 
 namespace Wee {
@@ -13,6 +15,8 @@ namespace Wee {
         m_idSeed = 1;
         reg(ST_MERGER, STMT_NEW_CREATOR(Merger));
         reg(ST_SPLITER, STMT_NEW_CREATOR(Spliter));
+        reg(ST_GOTO, STMT_NEW_CREATOR(GotoStmt));
+        reg(ST_IF, STMT_NEW_CREATOR(IfStmt));
     }
 
     StmtFactory::~StmtFactory() {

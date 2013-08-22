@@ -40,7 +40,7 @@ namespace Wee {
                 StmtRef ip = pipe->IP();
                 auto arglist = ret.args();
                 assert(arglist);
-                auto argarray = arglist->Split();
+                auto argarray = arglist->split();
                 assert(argarray.size() == ip->posts().size());
                 // destroy this pipeline and create new piplines
                 m_pipes.pop_front();

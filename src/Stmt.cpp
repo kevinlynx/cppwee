@@ -28,6 +28,10 @@ namespace Wee {
         m_prevs.push_back(stmt);
     }
 
+    Stmt::WeakPtr Stmt::next() {
+        return m_posts.size() > 0 ? m_posts[0] : nullptr;
+    }
+
     void Stmt::encode(WriteBuffer &buf) {
 
     }
