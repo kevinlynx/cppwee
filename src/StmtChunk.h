@@ -46,6 +46,10 @@ namespace Wee {
             return m_id;
         }
 
+        const StmtList &getStmts() const {
+            return m_stmts;
+        }
+
     private:
         StmtList m_stmts;
         StmtRef m_head;
